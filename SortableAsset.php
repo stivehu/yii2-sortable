@@ -21,7 +21,7 @@ class SortableAsset extends \kartik\base\AssetBundle
     {
         $this->setSourcePath(__DIR__ . '/assets');
         $this->setupAssets('css', ['css/kv-sortable']);
-        $this->setupAssets('js', ['js/html.sortable']);
+        $this->setupAssets('js', ['js/html.sortable', 'js/html.sortable.dblclick']);
         parent::init();
     }
 
