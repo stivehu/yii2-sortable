@@ -1,4 +1,4 @@
-sortable.dblclick = function () {
+$.fn.sortable.dblclick = function () {
     var panelId = [];
     $(".kv-connected").each(
             function () {
@@ -10,6 +10,9 @@ sortable.dblclick = function () {
         $(source).remove();
     }
     $('#' + panelId[0] + ' li,' + '#' + panelId[1] + ' li').dblclick(function () {
+        if ($(this).hasClass('disabled')) {
+            return;
+        }
         if ($(this).parent().attr('id') == panelId[0]) {
             swapItem(this, panelId[1], panelId[0]);
         } else {

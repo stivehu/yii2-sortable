@@ -21,6 +21,7 @@ use yii\helpers\ArrayHelper;
  */
 class Sortable extends \kartik\base\Widget
 {
+
     const TYPE_LIST = 'list';
     const TYPE_GRID = 'grid';
 
@@ -70,11 +71,13 @@ class Sortable extends \kartik\base\Widget
      * - options: array, the HTML attributes for the list item.
      */
     public $items = [];
+
     /**
      *
-     * @var boolean if true the you can move item to another column with double click
+     * @var boolean if true the you can add item to another column with double click
      */
     public $dblClick = true;
+
     /**
      * Initializes the widget
      */
@@ -133,6 +136,7 @@ class Sortable extends \kartik\base\Widget
     protected function renderItems()
     {
         $items = '';
+        $disabled = false;
         $handle = ($this->showHandle) ? Html::tag('span', $this->handleLabel, ['class' => 'handle']) : '';
         foreach ($this->items as $item) {
             $options = ArrayHelper::getValue($item, 'options', []);
@@ -162,7 +166,8 @@ class Sortable extends \kartik\base\Widget
         }
         $view->registerJs($js);
         if ($this->dblClick) {
-            $view->registerJs('sortable.dblclick();');
+            $view->registerJs('$.fn.sortable.dblclick();');
         }
     }
+
 }
